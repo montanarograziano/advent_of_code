@@ -21,3 +21,9 @@ For example, to download puzzles for year 2023:
 ```
 
 The script will create a folder _2023_ and a subfolder or each day, from 1 to 25, filling them with a _code.py_ file that you can fill with your solution, an _example1.py_ and _input.txt_ with the puzzle's input, and a _README.md_ with a link to the puzzle.
+
+I recommend creating alias to run the code with either the complete input or the small example. For example:
+
+```alias aot="uv run python code.py example.txt"```
+
+```alias aoc="uv run python code.py input.txt"```
