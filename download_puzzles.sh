@@ -1,5 +1,6 @@
 #!/bin/bash
 # Check if the year is provided as an argument
+set -e
 if [ -z "$1" ]; then
     echo "You need to provide an year. Usage: $0 <year>"
     exit 1
