@@ -17,7 +17,7 @@ if [ ! -f "$PYTHON_SCRIPT" ]; then
 fi
 
 # Loop through days 1 to 25
-for DAY in {01..01}; do
+for DAY in {01..25}; do
     echo "Setting up Day $DAY for Year $YEAR..."
 
     # Call the Python script with the current year and day
