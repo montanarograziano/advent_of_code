@@ -14,12 +14,16 @@ try:
 except ImportError:
     pypi_url = "https://pypi.org/project/advent-of-code-data/"
     print(f"Install {pypi_url} to autodownload input files")
-    raise SystemExit()
+    sys.exit(1)
 
 
 def download(year, day):
     """Get input and write it to input.txt inside the puzzle folder"""
-    puzzle = Puzzle(year=year, day=day)
+    try:
+        puzzle = Puzzle(year=year, day=day)
+        puzzle.title  # Accessing this property will raise an exception if the puzzle is not available
+    except Exception:
+        raise FileNotFoundError(f"Puzzle not available for day {day}")
 
     # Create puzzle directory
     year_path = pathlib.Path(__file__).parent / str(year)
@@ -65,4 +69,4 @@ if __name__ == "__main__":
     except Exception as err:
         # Catch exceptions so that Copier doesn't clean up directories
         print(f"Download of input failed: {err}")
-        raise SystemExit()
+        raise sys.exit(1)
