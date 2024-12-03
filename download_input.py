@@ -48,10 +48,13 @@ def download(year, day):
     if not template_path.exists():
         raise FileNotFoundError(f"Template file '{template_path}' not found!")
 
+    code_path = day_path / "code.py"
+    if code_path.exists():
+        # Skip to avoid over writing existing code.py
+        return
     code_content = template_path.read_text()
     code_content = code_content.replace("{DAY}", str(day)).replace("{YEAR}", str(year))
 
-    code_path = day_path / "code.py"
     code_path.write_text(code_content)
 
 
