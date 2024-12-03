@@ -13,19 +13,16 @@ def parse_data(puzzle_input: str):
 
 
 def part1(data):
-    """Solve part 1."""
     left, right = [list(x) for x in zip(*data)]
     return sum(abs(x - y) for x, y in zip(sorted(left), sorted(right)))
 
 
 def part2(data):
-    """Solve part 2."""
     left, right = [list(x) for x in zip(*data)]
     return sum(x * right.count(x) for x in left)
 
 
 def solve(puzzle_input):
-    """Solve the puzzle for the given input."""
     data = parse_data(puzzle_input)
     yield part1(data)
     yield part2(data)
