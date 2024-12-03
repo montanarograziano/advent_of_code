@@ -31,7 +31,7 @@ def download(year, day):
     input_path.write_text(puzzle.input_data)
 
     # Download example data
-    for example in puzzle.examples[1:2]:
+    for example in puzzle.examples[:1]:
         example_path = day_path / "example.txt"
         example_path.write_text(example.input_data)
 

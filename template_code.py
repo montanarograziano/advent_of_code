@@ -7,7 +7,7 @@ import sys
 INPUT_FILE = "input.txt"
 
 
-def parse_data(puzzle_input):
+def parse_data(puzzle_input: str):
     """Parse input."""
 
 
@@ -35,4 +35,3 @@ if __name__ == "__main__":
     else:
         solutions = solve(puzzle_input=pathlib.Path(INPUT_FILE).read_text().rstrip())
         print("\n".join(str(solution) for solution in solutions))
-
