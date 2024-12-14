@@ -66,6 +66,7 @@ def part2(data):
         px, py = list(map(int, p))
         vx, vy = list(map(int, v))
         robots.append([px, py, vx, vy])
+        grid[py][px] += 1
 
     seconds = 0
 
@@ -85,6 +86,8 @@ def part2(data):
         if is_tree(grid):
             plt.imshow(np.array(grid), cmap="viridis", interpolation="nearest")
             plt.show()
+            for line in grid:
+                print(line)
             return seconds
 
 
