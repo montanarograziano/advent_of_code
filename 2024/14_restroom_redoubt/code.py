@@ -76,8 +76,6 @@ def part2(data):
         if is_tree(grid):
             plt.imshow(np.array(grid), cmap="viridis", interpolation="nearest")
             plt.show()
-            for line in grid:
-                print(line)
             return seconds
 
 
