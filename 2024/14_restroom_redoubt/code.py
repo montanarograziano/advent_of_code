@@ -25,7 +25,6 @@ def part1(data):
         px, py = list(map(int, p))
         vx, vy = list(map(int, v))
         for _ in range(100):
-            # print((int(px), int(py), int(vx), int(vy)))
             px = (px + vx) % cols
             py = (py + vy) % rows
 
@@ -44,15 +43,6 @@ def part1(data):
             elif i > my and j > mx:
                 q4 += grid[i][j]
 
-    # for i, row in enumerate(grid):
-    #     for j, c in enumerate(row):
-    #         if i == rows // 2 or j == cols // 2:
-    #             print(" ", end="")
-    #         else:
-    #             print(grid[i][j], end="")
-    #     print("\n")
-    # print("\n")
-    print(q1, q2, q3, q4)
     return q1 * q2 * q3 * q4
 
 
