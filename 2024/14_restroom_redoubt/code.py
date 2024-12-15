@@ -75,6 +75,7 @@ def part2(data):
         seconds += 1
         if is_tree(grid):
             plt.imshow(np.array(grid), cmap="viridis", interpolation="nearest")
+            print("Remember to close the plot to continue.")
             plt.show()
             return seconds
 
