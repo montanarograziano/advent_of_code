@@ -11,6 +11,7 @@ dependencies = ["advent-of-code-data>=2.0.4"]
 dev = [
     "matplotlib>=3.10.0",
     "numpy>=2.2.0",
+    "pyqt6>=6.8.0",
     "ruff>=0.8.1",
 ]
 
