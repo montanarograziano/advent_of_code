@@ -4,9 +4,7 @@
 import heapq
 import pathlib
 import sys
-from collections import defaultdict
-
-from pyparsing import deque
+from collections import defaultdict, deque
 
 INPUT_FILE = "input.txt"
 
