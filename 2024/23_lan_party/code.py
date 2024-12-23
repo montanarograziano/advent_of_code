@@ -6,6 +6,8 @@ import sys
 from collections import defaultdict
 
 INPUT_FILE = "input.txt"
+sets = set()
+lans = defaultdict(set)
 
 
 def parse_data(puzzle_input: str):
@@ -24,37 +26,40 @@ def find_triples(lans):
                     triples.add(tuple(sorted([node, neighbour, neighbour2])))
     return triples
 
-def search(node, lans, req):
+
+def search(node: str, req: set[str]):
+    key = tuple(sorted(req))
+    if key in sets:
+        return
+    sets.add(key)
     for neighbor in lans[node]:
         if neighbor in req:
             continue
-        if all(neighbor in lans[query] for query in req):
+        if not (req <= lans[neighbor]):
             continue
-        
+        search(neighbor, {*req, neighbor})
 
 
+def build_lans(data):
+    global lans
+    for left, right in data:
+        lans[right].add(left)
+        lans[left].add(right)
 
 
 def part1(data):
     """Solve part 1."""
-    lans = defaultdict(set)
-    for left, right in data:
-        lans[right].add(left)
-        lans[left].add(right)
+    build_lans(data)
 
     triples: set[list[str]] = find_triples(lans)
-    print(len([s for s in triples if any(cn.startswith("t") for cn in s)]))
+    return len([s for s in triples if any(cn.startswith("t") for cn in s)])
 
 
 def part2(data):
     """Solve part 2."""
-    lans = defaultdict(set)
-    for left, right in data:
-        lans[right].add(left)
-        lans[left].add(right)
-
-    triples: set[list[str]] = find_triples(lans)
-    print(len([s for s in triples if all(cn.startswith("t") for cn in s)]))
+    for pc in lans:
+        search(pc, {pc})
+    return ",".join(sorted(max(sets, key=len)))
 
 
 def solve(puzzle_input):
